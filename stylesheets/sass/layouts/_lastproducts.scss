@@ -3,7 +3,8 @@
     margin-left: 10%;
     margin-right: 10%;
     h2{
-
+        padding-top: 2%;
+        padding-bottom: 2%;
     }
     .all-product{
         display: grid;
@@ -21,8 +22,8 @@
                 align-items: center;
                 justify-content: center;
                 .shoes{
-                    width: 100px;
-                    height: 100px;
+                    width: 200px;
+                    height: 200px;
                     padding: 10px;
                 }
             }
