@@ -1,6 +1,10 @@
 <?php 
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
+
+    //requires
+    require "../AZ-store/layouts/header.php";
+    require "../AZ-store/layouts/footer.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,13 +16,14 @@
 	<title>AZ-Store</title>
 </head>
 <body>
-	//header
-	<?php function(){}; ?>
-	//main
-		//section-our-store
-		//section-last-products
-		//section-quality
-		//section-comments
-	//footer
+	<!--header-->
+	<?php headerHtml(); ?>
+	<!--main-->
+		<!--section-our-store-->
+		<!--section-last-products-->
+		<!--section-quality-->
+		<!--section-comments-->
+	<!--footer-->
+  <?php footerHtml(); ?>
 </body>
 </html>
