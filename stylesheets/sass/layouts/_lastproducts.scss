@@ -1,0 +1,65 @@
+.last-products{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    h2{
+
+    }
+    .all-product{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+        .product{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .product-header{
+                background-color: #111827;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .shoes{
+                    width: 100px;
+                    height: 100px;
+                    padding: 10px;
+                }
+            }
+            .product-footer{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+                .product-details{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    //color : white;
+                    h2 {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        margin: 0;
+                    }
+                    p {
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+                .product-button{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+                    .button{
+                        background-color: #3B82F6;
+                        border: none;
+                        color : white;
+                        padding: 5px;
+                        margin:0;
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}
