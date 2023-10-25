@@ -1,0 +1,24 @@
+<?php 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./stylesheets/style.css">
+	<title>AZ-Store</title>
+</head>
+<body>
+	//header
+	<?php function(){}; ?>
+	//main
+		//section-our-store
+		//section-last-products
+		//section-quality
+		//section-comments
+	//footer
+</body>
+</html>
