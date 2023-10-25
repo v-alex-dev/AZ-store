@@ -1,3 +1,23 @@
+header {
+  border-bottom: solid 1px lightgrey;
+  margin: 0 1em;
+  padding-bottom: 0.5em;
+  box-shadow: 1em;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav img {
+  max-width: 1em;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -22,7 +42,6 @@ footer, header, nav, section, main {
 
 body {
   line-height: 1;
-  background-color: #0C134F;
 }
 
 ol, ul {
