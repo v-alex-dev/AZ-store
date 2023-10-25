@@ -25,6 +25,22 @@
 	<?php headerHtml(); ?>
 	<!-- main -->
 		<!-- section-our-store -->
+		<!-- START - section-our-store -->
+		<section class="section-our-store">
+            <div class="left-side">
+                <h1>Shoe the right <span>one</span>.</h1>
+                <button>See our store</button>
+            </div>
+            <div class="right-side">
+                <p>nike</p>
+                <picture>
+                    <img src="public/images/shoe/shoe_one.png" alt="Photo of a nike shoe.">
+                </picture>
+            </div>
+
+        </section>
+
+        <!-- END - section-our-store -->
 		<!-- section-last-products -->
 		<section class="last-products">
 			<h2><span>Our</span> last product</h2>

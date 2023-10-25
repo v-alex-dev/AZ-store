@@ -1,0 +1,16 @@
+.section-our-store {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+
+    .left-side {
+        width: 50%;
+    }
+    .right-side {
+        width: 50%;
+
+        picture img {
+            width: 100%;
+        }
+    }
+}
