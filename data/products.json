@@ -2,19 +2,19 @@
     {
         "id": 1,
         "product": "Nike Air Max 270",
-        "price": 140,
+        "price": 150,
         "image_url": "./public/images/shoe/shoe_one.png"
     },
     {
         "id": 2,
         "product": "Nike Air Max 270",
-        "price": 140,
+        "price": 130,
         "image_url": "./public/images/shoe/shoe_two.png"
     },
     {
         "id": 3,
         "product": "Nike Air Max 270",
-        "price": 140,
+        "price": 135,
         "image_url": "./public/images/shoe/shoe_three.png"
     },
     {
