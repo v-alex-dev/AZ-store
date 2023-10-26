@@ -11,7 +11,7 @@
 
 
 	session_start();
-
+	
 	if (!isset($_SESSION["shoppingCart"])) {
 		$_SESSION["shoppingCart"] = array();
 	}
@@ -23,7 +23,7 @@
 		
 		if (isset($products[$id-1])) {
 			$selectedProduct = $products[$id-1];
-
+	
 			// Vérifiez si le produit est déjà dans le panier
 			if (isset($shoppingCart[$selectedProduct['id']])) {
 				// Si le produit existe, augmentez simplement la quantité
@@ -33,12 +33,12 @@
 				$selectedProduct['quantity'] = 1;
 				$shoppingCart[$selectedProduct['id']] = $selectedProduct;
 			}
-
+	
 			$_SESSION["shoppingCart"] = $shoppingCart;
 		} else {
 			echo "Product not found.";
 		}
-	}
+	}	
 ?>
 
 <!DOCTYPE html>
