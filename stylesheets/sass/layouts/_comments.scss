@@ -1,0 +1,45 @@
+
+#section-comments {
+    @include display-flex-center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 15vh auto;
+
+    .comment-group {
+        @include display-flex-center; 
+        max-width: 20vw;
+        margin: 2%;
+        
+        picture {
+            @include display-flex-center; 
+
+            img {
+                width: 50%;
+                border-radius: 50%;
+            }
+        }
+
+        div {
+            h3 {
+                font-size: 1rem;
+                text-align: center;
+                margin: 1.5rem 0;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: .8rem;
+                text-align: center;
+                line-height: 1.4;
+                font-weight: 200;
+                &::before {
+                    content: '"';
+                }
+                &::after {
+                    content: '"';
+                }
+            }
+        }
+    }
+}
