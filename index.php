@@ -1,4 +1,4 @@
-<?php 
+<?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
@@ -6,8 +6,14 @@
     require "../AZ-store/layouts/header.php";
     require "../AZ-store/layouts/footer.php";
 
+    session_start();
+    $_SESSION['test-array'] = array();
+    $array = array();
+
 	$productsJson = file_get_contents('./data/products.json');
-    $products = json_decode($productsJson, true); 
+    $products = json_decode($productsJson, true);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,17 +57,18 @@
 				echo '<div class="product">'; // Opening div tag product
 					echo '<div class="product-header">'; // Opening div tag product header
 						echo '<img class="shoes" src="' . $product['image_url'] . '" alt="' . $product['product'] . '">';
-					echo '</div>'; // Closing div tag product header	
+					echo '</div>'; // Closing div tag product header
 					echo '<div class="product-footer">'; // Opening div tag product-footer
 						echo '<div class="product-details">'; // Opening div tag product-details
 							echo '<h2>' . $product['product'] . '</h2>';
 							echo '<p>' . $product['price'] . '€</p>';
 						echo '</div>'; // Closing div tag product-details
-						echo '<div class="product-button">'; // Opening div tag product-button
-							echo '<button class="button">Add to cart</button>';
-						echo '</div>'; // Closing div tag product-button
-					echo '</div>'; // Closing div tag product-footer
-				echo '</div>'; // Closing div tag product
+						echo '<div class="product-button" >'; // Opening div tag product-button
+                        //echo '<button class="button" name="id" type="submit" value="add-card">Add to cart</button>';
+                     // Closing div tag product-button
+					    echo '</div>'; // Closing div tag product-footer
+				    echo '</div>'; // Closing div tag product
+                echo '</div>';
             }
         } else {
             echo 'Error loading JSON data.';
