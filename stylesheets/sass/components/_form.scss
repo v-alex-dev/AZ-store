@@ -1,0 +1,49 @@
+.checkout_footer{
+    form{
+        width:50%;
+        margin:0 auto;
+        .name{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            input{
+                width: 49%;
+            }
+        }
+        #email{
+            width: 100%;
+        }
+        #address{
+            width: 100%;
+        }
+        .city{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            input{
+                width: 49%;
+            }
+        }
+        .country{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            input{
+                width: 49%;
+            }
+        }
+        .button{
+            background-color: #3B82F6;
+            border: none;
+            color : white;
+            padding: 5px;
+            margin:0;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+    }
+}
