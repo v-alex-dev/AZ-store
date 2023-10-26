@@ -246,11 +246,27 @@ h3 {
   content: '"';
 }
 
-#shopping-cart section {
-  display: flex;
+header {
+  border-bottom: solid 1px lightgrey;
+  margin: 0 1em;
+  padding-bottom: 0.5em;
 }
-#shopping-cart section picture img {
-  width: 200px;
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav img {
+  max-width: 1em;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  color: blue;
 }
 
 .linkNav {
@@ -284,4 +300,6 @@ footer nav {
 
 span {
   color: blue;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

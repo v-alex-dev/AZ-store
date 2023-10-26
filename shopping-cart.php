@@ -1,73 +1,58 @@
-<?php 
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    //requires
-    require "./layouts/header.php";
-    require "./layouts/footer.php";
+// Include necessary functions and components
+require "../AZ-store/layouts/header.php";
+require "../AZ-store/layouts/footer.php";
 
-	session_start();
-	$shoppingFromSession = array();
-	$shoppingCart = array();
-	if (isset($_SESSION["shoppingCart"])) {
-		$shoppingFromSession = $_SESSION["shoppingCart"];
+session_start();
 
-		foreach ($shoppingFromSession as $product) {
-			$productId = $product['id'];
-			$productName = $product['product'];
-			$productPrice = $product['price'];
-			$productUrl = $product['image_url'];
 
-			if (!isset($shoppingCart[$productId])) {
-				$shoppingCart[$productId] = [
-					'product' => $productName,
-					'price' => $productPrice,
-					'id' => $productId,
-					'image_url' => $productUrl,
-					'count' => 0
-				];
-			}
+// Check if the shopping cart session variable exists
+if (!isset($_SESSION["shoppingCart"])) {
+    $_SESSION["shoppingCart"] = array();
+}
 
-			$shoppingCart[$productId]['count']++;
-		}
-	}
+$shoppingCart = $_SESSION["shoppingCart"];
+
+
+// Your shopping cart HTML and PHP code can go here
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<title>Shopping card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Shopping Cart</title>
 </head>
 <body>
-	<!-- header -->
-	<?php headerHtml(); ?>
+    <!-- Include the header -->
+    <?php headerHtml(); ?>
 
-	<!-- main -->
-	<main id="shopping-cart">
-		<?php 
-			if ($shoppingCart) {
-				foreach ($shoppingCart as $product) { ?>
-				<section>
-					<picture>
-						<img src="<?php echo $product['image_url'] ?>" alt="<?php echo $product['product'] ?>">
-					</picture>
-					<h2><?php echo $product['product'] ?></h2>
-					<p><?php echo $product['price'] ?> €</p>
-					<p>x <?php echo $product['count'] ?></p>
-				</section>
-				
-			
-		<?php 
-				}
-			} else {
-					
-			}
-		?>
-	</main>
-	<!-- footer -->
-	<?php footerHtml(); ?>
+    <!-- Your shopping cart content here -->
+    <div class="shopping-cart">
+        <h2>Your Shopping Cart</h2>
+        <?php
+        // Check if the shopping cart is not empty
+        if (!empty($shoppingCart)) {
+            foreach ($shoppingCart as $item) {
+				echo '<div class="cart-item">';
+				echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
+				echo '<h3>' . $item['product'] . '</h3>';
+				echo '<p>' . $item['price'] . ' €</p>';
+				echo '<p>Quantity: ' . $item['quantity'] . '</p>';
+				echo '</div>';
+			}			
+        } else {
+            echo '<p>Your shopping cart is empty.</p>';
+        }
+        ?>
+    </div>
+
+    <!-- Include the footer -->
+    <?php footerHtml(); ?>
 </body>
 </html>
