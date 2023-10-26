@@ -244,29 +244,6 @@ h3 {
   content: '"';
 }
 
-header {
-  border-bottom: solid 1px lightgrey;
-  margin: 0 1em;
-  padding-bottom: 0.5em;
-}
-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-header nav img {
-  max-width: 1em;
-}
-
-footer nav {
-  display: flex;
-  justify-content: center;
-}
-
-span {
-  color: blue;
-}
-
 .linkNav {
   padding: 0.5em;
   text-decoration: none;
