@@ -8,6 +8,27 @@
 
 	$productsJson = file_get_contents('./data/products.json');
     $products = json_decode($productsJson, true); 
+
+
+	session_start();
+
+	if (!isset($_SESSION["shoppingCart"])) {
+		$_SESSION["shoppingCart"] = array();
+	}
+
+	$shoppingCart = $_SESSION["shoppingCart"];
+
+	if (isset($_POST['add-cart'])) {
+		$id = $_POST['add-cart'];
+		
+		if (isset($products[$id-1])) {
+			$selectedProduct = $products[$id-1];
+			$shoppingCart[] = $selectedProduct;
+			$_SESSION["shoppingCart"] = $shoppingCart;
+		} else {
+			echo "Product not found.";
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -42,32 +63,36 @@
 		<!-- section-last-products -->
 		<section class="last-products">
 			<h2><span>Our</span> last product</h2>
-        <?php
-		echo '<div class="all-product">'; // Opening div tag all-product
-        // Check if JSON data was successfully loaded
-        if ($products) {
-            // Iterate through the products and display them
-            foreach ($products as $product) {
-				echo '<div class="product">'; // Opening div tag product
-					echo '<div class="product-header">'; // Opening div tag product header
-						echo '<img class="shoes" src="' . $product['image_url'] . '" alt="' . $product['product'] . '">';
-					echo '</div>'; // Closing div tag product header	
-					echo '<div class="product-footer">'; // Opening div tag product-footer
-						echo '<div class="product-details">'; // Opening div tag product-details
-							echo '<h2>' . $product['product'] . '</h2>';
-							echo '<p>' . $product['price'] . '€</p>';
-						echo '</div>'; // Closing div tag product-details
-						echo '<div class="product-button">'; // Opening div tag product-button
-							echo '<button class="button">Add to cart</button>';
-						echo '</div>'; // Closing div tag product-button
-					echo '</div>'; // Closing div tag product-footer
-				echo '</div>'; // Closing div tag product
-            }
-        } else {
-            echo 'Error loading JSON data.';
-        }
-		echo '</div>'; // Closing div tag all-product
-        ?>
+			<div class="all-product">
+				<?php 
+					// Check if JSON data was successfully loaded
+					if ($products) {
+						// Iterate through the products and display them
+						foreach ($products as $product) { ?>
+							<div class="product">
+								<div class="product-header">
+									<img class="shoes" src="<?php echo $product['image_url'] ?>" alt="<?php echo $product['product'] ?>">
+								</div>
+								<div class="product-footer">
+									<div class="product-details">
+										<h2><?php echo $product['product'] ?></h2>
+										<p><?php echo $product['price'] ?> €</p>
+									</div>
+									<form method="post">
+										<input type="hidden" name="add-cart" value="<?php echo $product['id'] ?>">
+										<div class="product-button">
+											<button type="submit" class="button">Add to cart</button>
+										</div>
+									</form>
+								</div>
+							</div> 
+						<?php }
+					} else {
+						echo 'Error loading JSON data.';
+					}
+				?>
+			</div>
+        
 		</section>
 
 		<!-- section-quality -->
