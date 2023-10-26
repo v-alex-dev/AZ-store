@@ -8,7 +8,7 @@ function headerHtml()
             <div class="header-title">AZ[store]</div>
             <?php include "../AZ-store/components/itemsNav.php"; ?>
             <div>
-                <a class="icone" href="pages/shopping-cart.php">
+                <a class="icone" href="./shopping-cart.php">
                     <svg fill="white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         width="1.5em" height="1.5em" viewBox="0 0 902.86 902.86"

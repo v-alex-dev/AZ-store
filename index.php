@@ -17,8 +17,6 @@
     $products = json_decode($productsJson, true);
 
 
-	session_start();
-
 	if (!isset($_SESSION["shoppingCart"])) {
 		$_SESSION["shoppingCart"] = array();
 	}
