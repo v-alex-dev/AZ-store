@@ -26,7 +26,7 @@
 	<!-- main -->
 		<!-- section-our-store -->
 		<!-- START - section-our-store -->
-		<section class="section-our-store">
+		<section id="section-our-store">
             <div class="left-side">
                 <h1>Shoe the right <span>one</span>.</h1>
                 <button>See our store</button>
@@ -69,7 +69,8 @@
         }
 		echo '</div>'; // Closing div tag all-product
         ?>
-   		</section>
+		</section>
+
 		<!-- section-quality -->
 		<!-- section-comments -->
 	<!-- footer -->

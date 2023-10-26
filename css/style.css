@@ -121,12 +121,12 @@ h3 {
   width: 80%;
 }
 
-.section-our-store {
+#section-our-store {
   display: flex;
   width: 80%;
   margin: 0 auto;
 }
-.section-our-store .left-side {
+#section-our-store .left-side {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,12 +134,12 @@ h3 {
   align-items: flex-start;
   width: 50%;
 }
-.section-our-store .left-side h1 {
+#section-our-store .left-side h1 {
   text-transform: uppercase;
   font-size: 6vw;
   padding: clamp(10px, 2rem, 20px) 0;
 }
-.section-our-store .left-side button {
+#section-our-store .left-side button {
   background: linear-gradient(to right, #3a7ff2, #1e3b8c);
   color: #e5e7eb;
   font-size: 2vmin;
@@ -147,13 +147,14 @@ h3 {
   border: none;
   border-radius: 5px;
   font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
 }
-.section-our-store .right-side {
+#section-our-store .right-side {
   width: 50%;
   position: relative;
   z-index: 1;
 }
-.section-our-store .right-side p {
+#section-our-store .right-side p {
   position: absolute;
   top: 50%;
   right: 0;
@@ -164,6 +165,6 @@ h3 {
   color: #0f1625;
   text-shadow: 1px 1px 5px rgba(229, 231, 235, 0.5137254902);
 }
-.section-our-store .right-side picture img {
+#section-our-store .right-side picture img {
   width: 90%;
 }/*# sourceMappingURL=style.css.map */
