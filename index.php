@@ -77,7 +77,40 @@
 			<h3>WE PROVIDE YOU THE <span>BEST</span> QUALITY.</h3>
 			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, enim laboriosam officia provident nostrum commodi.</p>
 		</section>
+
 		<!-- section-comments -->
+		<!-- START - section-comments -->
+		<section id="section-comments">
+			<div class="comment-group">
+				<picture>
+					<img src="public/images/image-emily.jpg" alt="Photo de ...">
+				</picture>
+				<div>
+					<h3>Emily from xyz</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ipsum necessitatibus animi id temporibus incidunt.</p>
+				</div>
+			</div>
+			<div class="comment-group">
+				<picture>
+					<img src="public/images/image-thomas.jpg" alt="Photo de ...">
+				</picture>
+				<div>
+					<h3>Thomas from corporate</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ipsum necessitatibus animi id temporibus incidunt.</p>
+				</div>
+			</div>
+			<div class="comment-group">
+				<picture>
+					<img src="public/images/image-jennie.jpg" alt="Photo de ...">
+				</picture>
+				<div>
+					<h3>Jennie from Nike</h3>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ipsum necessitatibus animi id temporibus incidunt.</p>
+				</div>
+			</div>
+
+		</section>
+		<!-- END - section-comments -->
 	<!-- footer -->
 	<?php footerHtml(); ?>
 </body>
