@@ -21,6 +21,9 @@ footer, header, nav, section, main {
 
 body {
   line-height: 1;
+  background-color: #0f1625;
+  color: #e5e7eb;
+  font-family: "Ubuntu", sans-serif;
 }
 
 ol, ul {
@@ -194,11 +197,14 @@ h3 {
 
 .linkNav {
   padding: 0.5em;
+  text-decoration: none;
+  color: white;
 }
+
 header {
-  border-bottom: solid 1px lightgrey;
+  border-bottom: solid 1px #404040;
   margin: 0 1em;
-  padding-bottom: 0.5em;
+  padding-bottom: 1em;
 }
 header nav {
   display: flex;
@@ -206,15 +212,16 @@ header nav {
   align-items: center;
   padding-top: 1em;
 }
-header nav img {
-  max-width: 1em;
+header nav .login {
+  text-decoration: none;
+  color: white;
 }
 
 footer nav {
   display: flex;
   justify-content: center;
   padding: 1.5em 0;
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid #404040;
 }
 
 span {
