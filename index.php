@@ -72,6 +72,11 @@
 		</section>
 
 		<!-- section-quality -->
+		<section class="quality">
+			<img class="qualityShoes" src="./public/images/shoe_two.png" alt="Chaussure mauve">
+			<h3>WE PROVIDE YOU THE <span>BEST</span> QUALITY.</h3>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, enim laboriosam officia provident nostrum commodi.</p>
+		</section>
 		<!-- section-comments -->
 	<!-- footer -->
 	<?php footerHtml(); ?>
