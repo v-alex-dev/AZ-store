@@ -26,7 +26,7 @@
 	<!-- main -->
 		<!-- section-our-store -->
 		<!-- START - section-our-store -->
-		<section class="section-our-store">
+		<section id="section-our-store">
             <div class="left-side">
                 <h1>Shoe the right <span>one</span>.</h1>
                 <button>See our store</button>
@@ -69,8 +69,14 @@
         }
 		echo '</div>'; // Closing div tag all-product
         ?>
-   		</section>
+		</section>
+
 		<!-- section-quality -->
+		<section class="quality">
+			<img class="qualityShoes" src="./public/images/shoe_two.png" alt="Chaussure mauve">
+			<h3>WE PROVIDE YOU THE <span>BEST</span> QUALITY.</h3>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, enim laboriosam officia provident nostrum commodi.</p>
+		</section>
 		<!-- section-comments -->
 	<!-- footer -->
 	<?php footerHtml(); ?>

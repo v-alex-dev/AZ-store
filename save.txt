@@ -1,37 +1,24 @@
 
 
-// colors
-$color-dark-blue: #0f1625;             // background
-$color-dark-blue: #111827;             // background card
-$color-medium-blue: #2563eb;           // text + button
-$color-medium-grey-left: #2e333c;      // border text nike (left)
-$color-medium-grey-bottom: #242934;    // border text nike (bottom)
-$color-light-grey: #e5e7eb;            // text
-
-// pour le linear du bouton : #1e3b8c  et #3a7ff2
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
                                        HTML
 ////////////////////////////////////////////////////////////////////////////////////////
 
-        <!-- START - section-our-store -->
-        <section class="section-our-store">
-            <div class="left-side">
-                <h1>Shoe the right <span>one</span>.</h1>
-                <button>See our store</button>
-            </div>
-            <div class="right-side">
-                <p>nike</p>
-                <picture>
-                    <img src="public/images/shoe/shoe_one.png" alt="Photo of a nike shoe.">
-                </picture>
-            </div>
 
-        </section>
-
-        <!-- END - section-our-store -->
-
+		<!-- START - section-our-store -->
+		<section id="section-quality">
+			<picture>
+				<img src="public/images/shoe/shoe_one.png" alt="Photo of a nike shoe.">
+			</picture>
+			<div class="title">
+				<h2>We provide you the best quality</h2>
+			</div>
+			<div class="text">
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas inventore placeat, eos debitis fuga, architecto ipsa saepe cum autem doloremque laudantium iste quasi sed dolor.</p>
+			</div>
+		</section>
+		<!-- END - section-our-store -->
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -39,24 +26,40 @@ $color-light-grey: #e5e7eb;            // text
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-body {
-    background-color: #0f1625;
-    color: #e5e7eb;
+#section-quality {
+    @include display-flex-center;
 
-    .section-our-store {
-        display: flex;
-        width: 80%;
-        margin: 0 auto;
+    height: 90vh;
+    width: 80%;
+    margin: 0 auto;
+    // padding: 5vh 0;
 
-        .left-side {
-            width: 50%;
+    picture {
+        width: 40%;
+        img {
+            width: 100%;   
         }
-        .right-side {
-            width: 50%;
+    }
+        
 
-            picture img {
-                width: 100%;
-            }
+    .title {
+        width: 60%;
+        
+        h2 {
+            font-size: 5vw;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+    
+    .text {
+        width: 75%;
+        padding: 1rem 0;
+        p {
+            font-size: .9rem;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.4;
         }
     }
 }
