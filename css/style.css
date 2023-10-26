@@ -12,9 +12,7 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: none;
-     -moz-text-size-adjust: none;
-          text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 footer, header, nav, section, main {
@@ -61,8 +59,7 @@ h3 {
 
 .last-products {
   width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 2% 10% 5%;
 }
 .last-products h2 {
   padding-top: 2%;
@@ -129,6 +126,7 @@ h3 {
   display: flex;
   width: 80%;
   margin: 0 auto;
+  border-bottom: 0.1px solid rgba(229, 231, 235, 0.2117647059);
 }
 #section-our-store .left-side {
   display: flex;
@@ -178,21 +176,94 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 80vh;
   width: 50%;
   margin: auto;
-  padding-top: 10%;
 }
 .quality .qualityShoes {
-  width: 350px;
-  height: 350px;
+  width: 50%;
 }
 .quality h3 {
-  font-size: 3rem;
+  max-width: 80%;
+  font-size: 4vw;
   font-weight: 600;
   margin: 0;
   text-align: center;
 }
 .quality p {
   text-align: center;
-  padding-top: 2%;
-}/*# sourceMappingURL=style.css.map */
+  padding-top: 3%;
+  line-height: 1.4;
+}
+
+#section-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 15vh auto;
+}
+#section-comments .comment-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 20vw;
+  margin: 2%;
+}
+#section-comments .comment-group picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#section-comments .comment-group picture img {
+  width: 50%;
+  border-radius: 50%;
+}
+#section-comments .comment-group div h3 {
+  font-size: 1rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+#section-comments .comment-group div p {
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.4;
+  font-weight: 200;
+}
+#section-comments .comment-group div p::before {
+  content: '"';
+}
+#section-comments .comment-group div p::after {
+  content: '"';
+}
+
+header {
+  border-bottom: solid 1px lightgrey;
+  margin: 0 1em;
+  padding-bottom: 0.5em;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav img {
+  max-width: 1em;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  color: blue;
+}
+
+/*# sourceMappingURL=style.css.map */
