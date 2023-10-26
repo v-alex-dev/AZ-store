@@ -15,14 +15,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<title>AZ-Store</title>
 </head>
+
 <body>
 	<!-- header -->
 	<?php headerHtml(); ?>
 	<!-- main -->
 		<!-- section-our-store -->
+		<!-- START - section-our-store -->
+		<section id="section-our-store">
+            <div class="left-side">
+                <h1>Shoe the right <span>one</span>.</h1>
+                <button>See our store</button>
+            </div>
+            <div class="right-side">
+                <p>nike</p>
+                <picture>
+                    <img src="public/images/shoe/shoe_one.png" alt="Photo of a nike shoe.">
+                </picture>
+            </div>
+        </section>
+        <!-- END - section-our-store -->
+
 		<!-- section-last-products -->
 		<section class="last-products">
 			<h2><span>Our</span> last product</h2>
@@ -52,7 +68,8 @@
         }
 		echo '</div>'; // Closing div tag all-product
         ?>
-   		</section>
+		</section>
+
 		<!-- section-quality -->
 		<section class="quality">
 			<img class="qualityShoes" src="./public/images/shoe_two.png" alt="Chaussure mauve">

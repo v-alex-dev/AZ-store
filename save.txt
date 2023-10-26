@@ -1,0 +1,65 @@
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+                                       HTML
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+		<!-- START - section-our-store -->
+		<section id="section-quality">
+			<picture>
+				<img src="public/images/shoe/shoe_one.png" alt="Photo of a nike shoe.">
+			</picture>
+			<div class="title">
+				<h2>We provide you the best quality</h2>
+			</div>
+			<div class="text">
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas inventore placeat, eos debitis fuga, architecto ipsa saepe cum autem doloremque laudantium iste quasi sed dolor.</p>
+			</div>
+		</section>
+		<!-- END - section-our-store -->
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+                                       CSS
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+#section-quality {
+    @include display-flex-center;
+
+    height: 90vh;
+    width: 80%;
+    margin: 0 auto;
+    // padding: 5vh 0;
+
+    picture {
+        width: 40%;
+        img {
+            width: 100%;   
+        }
+    }
+        
+
+    .title {
+        width: 60%;
+        
+        h2 {
+            font-size: 5vw;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+    
+    .text {
+        width: 75%;
+        padding: 1rem 0;
+        p {
+            font-size: .9rem;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.4;
+        }
+    }
+}

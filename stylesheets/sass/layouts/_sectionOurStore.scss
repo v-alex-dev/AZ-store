@@ -1,0 +1,53 @@
+#section-our-store {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+
+    .left-side {
+        @include display-flex-center;
+        align-items: flex-start;
+        width: 50%;
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 6vw;
+            padding: clamp(10px, 2rem, 20px) 0;
+        }
+
+        button {
+            background: linear-gradient(to right, #3a7ff2, #1e3b8c);
+            color: $color-light-grey;
+            font-size: 2vmin;
+            padding: 2vmin;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu', sans-serif;
+            cursor: pointer;
+        }
+    }
+
+    .right-side {
+        width: 50%;
+        position: relative;
+        z-index: 1;
+
+        p {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: -1;
+            font-size: 17.5vw;
+            text-transform: uppercase;
+            color: #0f1625;
+            text-shadow: 1px 1px 5px #e5e7eb83;
+        }
+        
+
+        picture img {
+            width: 90%;
+            // height: 100%;
+            // object-fit: cover;
+        }
+    }
+}
