@@ -12,7 +12,9 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
 }
 
 footer, header, nav, section, main {
@@ -277,4 +279,50 @@ span {
   color: blue;
 }
 
-/*# sourceMappingURL=style.css.map */
+.checkout_footer form {
+  width: 50%;
+  margin: 0 auto;
+}
+.checkout_footer form .name {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.checkout_footer form .name input {
+  width: 49%;
+}
+.checkout_footer form #email {
+  width: 100%;
+}
+.checkout_footer form #address {
+  width: 100%;
+}
+.checkout_footer form .city {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.checkout_footer form .city input {
+  width: 49%;
+}
+.checkout_footer form .country {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.checkout_footer form .country input {
+  width: 49%;
+}
+.checkout_footer form .button {
+  background-color: #3B82F6;
+  border: none;
+  color: white;
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 5px;
+}/*# sourceMappingURL=style.css.map */

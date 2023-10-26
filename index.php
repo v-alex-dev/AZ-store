@@ -6,16 +6,11 @@
     require "../AZ-store/layouts/header.php";
     require "../AZ-store/layouts/footer.php";
 
-    session_start();
-    $_SESSION['test-array'] = array();
-    $array = array();
-
 	$productsJson = file_get_contents('./data/products.json');
-    $products = json_decode($productsJson, true);
+    $products = json_decode($productsJson, true); 
 
 
-    $products = json_decode($productsJson, true);
-
+	session_start();
 
 	if (!isset($_SESSION["shoppingCart"])) {
 		$_SESSION["shoppingCart"] = array();
@@ -25,10 +20,20 @@
 
 	if (isset($_POST['add-cart'])) {
 		$id = $_POST['add-cart'];
-
+		
 		if (isset($products[$id-1])) {
 			$selectedProduct = $products[$id-1];
-			$shoppingCart[] = $selectedProduct;
+
+			// Vérifiez si le produit est déjà dans le panier
+			if (isset($shoppingCart[$selectedProduct['id']])) {
+				// Si le produit existe, augmentez simplement la quantité
+				$shoppingCart[$selectedProduct['id']]['quantity'] += 1;
+			} else {
+				// Si le produit n'existe pas, ajoutez-le avec une quantité de 1
+				$selectedProduct['quantity'] = 1;
+				$shoppingCart[$selectedProduct['id']] = $selectedProduct;
+			}
+
 			$_SESSION["shoppingCart"] = $shoppingCart;
 		} else {
 			echo "Product not found.";
@@ -69,7 +74,7 @@
 		<section class="last-products">
 			<h2><span>Our</span> last product</h2>
 			<div class="all-product">
-				<?php
+				<?php 
 					// Check if JSON data was successfully loaded
 					if ($products) {
 						// Iterate through the products and display them
@@ -90,14 +95,14 @@
 										</div>
 									</form>
 								</div>
-							</div>
+							</div> 
 						<?php }
 					} else {
 						echo 'Error loading JSON data.';
 					}
 				?>
 			</div>
-
+        
 		</section>
 
 		<!-- section-quality -->
