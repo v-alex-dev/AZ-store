@@ -2,15 +2,14 @@ header {
   border-bottom: solid 1px lightgrey;
   margin: 0 1em;
   padding-bottom: 0.5em;
+
   nav{
     display: flex;
     justify-content: space-between;
-
     align-items: center;
-
+    padding-top: 1em;
     img{
       max-width: 1em;
     }
   }
-
 }
