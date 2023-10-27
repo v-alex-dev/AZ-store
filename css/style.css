@@ -244,7 +244,6 @@ h3 {
 }
 
 #shopping-cart {
-  min-height: calc(100vh - 120px);
   margin: clamp(20px, 5vw, 50px);
 }
 #shopping-cart h2 {
@@ -299,6 +298,8 @@ header nav {
   justify-content: space-between;
   align-items: center;
   padding-top: 1em;
+  width: 80%;
+  margin: 0 auto;
 }
 header nav .login {
   text-decoration: none;
