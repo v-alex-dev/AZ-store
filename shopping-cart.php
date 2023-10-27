@@ -47,14 +47,13 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
 
     <!-- Your shopping cart content here -->
     <div id="shopping-cart">
-        <h2>Your Shopping Cart</h2>
-        <?php
-            // Check if the shopping cart is not empty and is an array
-            if (!empty($shoppingCart) && is_array($shoppingCart)) {
-                foreach ($shoppingCart as $key => $item) {
-                    if ($key === 'totalOrder') {
-                        break;
-                    }?>
+    <h2>Your Shopping Cart</h2>
+    <?php
+        // Check if the shopping cart is not empty and is an array
+        if (!empty($shoppingCart) && is_array($shoppingCart)) {
+            foreach ($shoppingCart as $key => $item) {
+                if (is_array($item)) { // Check if the item is an array
+                    ?>
                     <div class="cart-item">
                         <picture>
                             <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
@@ -68,12 +67,14 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
                         </div>
                         <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                     </div>
-            <?php }
-            } else { ?>
-                <p>Your shopping cart is empty.</p>
-            <?php } ?>
+                    <?php
+                }
+            }
+        } else { ?>
+            <p>Your shopping cart is empty.</p>
+        <?php } ?>
     </div>
-
+    
     <div>
         <h3>Récapitulatif de la commande</h3>
         <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
