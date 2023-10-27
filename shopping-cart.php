@@ -21,31 +21,30 @@ if (isset($_POST['delete-item'])) {
         unset($shoppingCart[$deleteItemId]);
     }
 }
+if (isset($_POST['incr-item'])) {
+    $incrItemId = $_POST['incr-item'];
+    if (isset($shoppingCart[$incrItemId])) {
+        $shoppingCart[$incrItemId]['quantity']++;
+    }
+    $_SESSION["shoppingCart"] = $shoppingCart;
+}
+if (isset($_POST['decr-item'])) {
+    $decrItemId = $_POST['decr-item'];
+    if (isset($shoppingCart[$decrItemId])) {
+        if ($shoppingCart[$decrItemId]['quantity'] > 1) {
+            $shoppingCart[$decrItemId]['quantity']--;
+        } else {
+            // Si la quantité atteint 1, supprimez l'article du panier
+            unset($shoppingCart[$decrItemId]);
+        }
+        $_SESSION["shoppingCart"] = $shoppingCart;
+    }
+}
 foreach ($shoppingCart as $product) {
     if (is_array($product)) { // Check if the item is an array
         $subtotal = $product['price'] * $product['quantity'];
         $totalOrder += $subtotal;
-        if (isset($_SESSION["shoppingCart"])) {
-            $shoppingCart = $_SESSION["shoppingCart"];
-        }
 
-        if (isset($_POST['incr-item'])) {
-            $incrItemId = $_POST['incr-item'];
-            if (isset($shoppingCart[$incrItemId])) {
-                $shoppingCart[$incrItemId]['quantity']++;
-            }
-            $_SESSION["shoppingCart"] = $shoppingCart;
-        }
-        if (isset($_POST['decr-item'])) {
-            $decrItemId = $_POST['decr-item'];
-            if (isset($shoppingCart[$decrItemId])) {
-                $shoppingCart[$decrItemId]['quantity']--;
-            }
-            if ($shoppingCart[$decrItemId]['quantity'] === 0) {
-                unset($shoppingCart[$decrItemId]);
-            }
-            $_SESSION["shoppingCart"] = $shoppingCart;
-        }
 
         $totalOrder = number_format($totalOrder, 2, '.', '');
         $tva = number_format($totalOrder * 0.21, 2, '.', '');
@@ -88,17 +87,22 @@ foreach ($shoppingCart as $product) {
                         <h3><?php echo $item['product'] ?></h3>
                         <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
                         <div class="btn-group">
-                            <form method="post" id="btn-delete">
+                            <form method="post" id="btn-decrement">
                                 <input type="hidden" name="decr-item" value="<?php echo $item['id']; ?>">
                                 <button type="submit" class="decr-button">-</button>
                             </form>
                             <button><?php echo $item['quantity'] ?></button>
-                            <form method="post" id="btn-delete">
+                            <form method="post" id="btn-increment">
                                 <input type="hidden" name="incr-item" value="<?php echo $item['id']; ?>">
                                 <button type="submit" class="incr-button">+</button>
                             </form>
+
                         </div>
                         <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
+                        <form method="post" id="btn-delete">
+                            <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
+                            <button type="submit" class="btn-delete">x</button>
+                        </form>
                     </div>
                 <?php }
             }
