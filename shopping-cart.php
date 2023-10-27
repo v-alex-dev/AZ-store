@@ -1,49 +1,45 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    // Include necessary functions and components
-    require "../AZ-store/layouts/header.php";
-    require "../AZ-store/layouts/footer.php";
+// Include necessary functions and components
+require "../AZ-store/layouts/header.php";
+require "../AZ-store/layouts/footer.php";
 
-    session_start();
-    // session_destroy();
+session_start();
+// session_destroy();
 
-    $totalOrder = 0;
-    $totalOrderTVAC = 0;
+$totalOrder = 0;
+$totalOrderTVAC = 0;
 
-    if (isset($_SESSION["shoppingCart"])) {
-        $shoppingCart = $_SESSION["shoppingCart"];
+if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
+    $shoppingCart = $_SESSION["shoppingCart"];
 
-        foreach ($shoppingCart as $product) {
+    foreach ($shoppingCart as $product) {
+        if (is_array($product)) { // Check if the item is an array
             $subtotal = $product['price'] * $product['quantity'];
             $totalOrder += $subtotal;
         }
-        $totalOrder = number_format($totalOrder, 2, '.', '');
-        $tva = number_format($totalOrder * 0.21, 2, '.', '');
-        $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
-        // $tva = $totalOrder * 0.21;
-        // $totalOrderTVAC = $totalOrder * 1.21;
-
-        $shoppingCart['totalOrder'] = $totalOrder;
-        $shoppingCart['tva'] = $tva;
-        $shoppingCart['totalOrderTVAC'] = $totalOrderTVAC;
-
-        $_SESSION["shoppingCart"] = $shoppingCart;
-
     }
-    echo '<pre>';
-    print_r($shoppingCart);
-    echo '</pre>';
-?>
 
+    $totalOrder = number_format($totalOrder, 2, '.', '');
+    $tva = number_format($totalOrder * 0.21, 2, '.', '');
+    $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
+
+    $shoppingCart['totalOrder'] = $totalOrder;
+    $shoppingCart['tva'] = $tva;
+    $shoppingCart['totalOrderTVAC'] = $totalOrderTVAC;
+
+    $_SESSION["shoppingCart"] = $shoppingCart;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <title>Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
+	<title>Shopping Cart</title>
 </head>
 <body>
     <!-- Include the header -->
@@ -53,8 +49,8 @@
     <div id="shopping-cart">
         <h2>Your Shopping Cart</h2>
         <?php
-            // Check if the shopping cart is not empty
-            if (!empty($shoppingCart)) {
+            // Check if the shopping cart is not empty and is an array
+            if (!empty($shoppingCart) && is_array($shoppingCart)) {
                 foreach ($shoppingCart as $key => $item) {
                     if ($key === 'totalOrder') {
                         break;
@@ -71,9 +67,8 @@
                             <button>+</button>
                         </div>
                         <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
-
                     </div>
-            <?php }	
+            <?php }
             } else { ?>
                 <p>Your shopping cart is empty.</p>
             <?php } ?>
@@ -83,7 +78,6 @@
         <h3>Récapitulatif de la commande</h3>
         <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
         <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrderTVAC'];} ?></p>
-
     </div>
 
     <!-- Include the footer -->
