@@ -63,28 +63,28 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
     // Check if the shopping cart is not empty
     if (!empty($shoppingCart)) {
         foreach ($shoppingCart as $key => $item) {
-            if ($key === 'totalOrder') {
-                break;
-            } ?>
-            <div class="cart-item">
-                <picture>
-                    <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
-                </picture>
-                <h3><?php echo $item['product'] ?></h3>
-                <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
-                <div class="btn-group">
-                    <button>-</button>
-                    <button><?php echo $item['quantity'] ?></button>
-                    <button>+</button>
+            if (is_array($item)) {
+                ?>
+                <div class="cart-item">
+                    <picture>
+                        <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
+                    </picture>
+                    <h3><?php echo $item['product'] ?></h3>
+                    <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                    <div class="btn-group">
+                        <button>-</button>
+                        <button><?php echo $item['quantity'] ?></button>
+                        <button>+</button>
+                    </div>
+                    <form method="post" id="btn-delete">
+                        <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
+                        <button type="submit" class="delete-button">x</button>
+                    </form>
+                    <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                 </div>
-                <form method="post" id="btn-delete">
-                    <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
-                    <button type="submit" class="delete-button">x</button>
-                </form>
-                <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
-            </div>
 
-        <?php }
+            <?php }
+        }
     } else { ?>
         <p>Your shopping cart is empty.</p>
     <?php } ?>
