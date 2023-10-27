@@ -37,50 +37,55 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/style.css">
-	<title>Shopping Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Shopping Cart</title>
 </head>
 <body>
-    <!-- Include the header -->
-    <?php headerHtml(); ?>
+<!-- Include the header -->
+<?php headerHtml(); ?>
 
-    <!-- Your shopping cart content here -->
-    <div id="shopping-cart">
-        <h2>Your Shopping Cart</h2>
-        <?php
-            // Check if the shopping cart is not empty and is an array
-            if (!empty($shoppingCart) && is_array($shoppingCart)) {
-                foreach ($shoppingCart as $key => $item) {
-                    if ($key === 'totalOrder') {
-                        break;
-                    }?>
-                    <div class="cart-item">
-                        <picture>
-                            <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
-                        </picture>
-                        <h3><?php echo $item['product'] ?></h3>
-                        <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
-                        <div class="btn-group">
-                            <button>-</button>
-                            <button><?php echo $item['quantity'] ?></button>
-                            <button>+</button>
-                        </div>
-                        <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
+<!-- Your shopping cart content here -->
+<div id="shopping-cart">
+    <h2>Your Shopping Cart</h2>
+    <?php
+    // Check if the shopping cart is not empty and is an array
+    if (!empty($shoppingCart) && is_array($shoppingCart)) {
+        foreach ($shoppingCart as $key => $item) {
+            if (is_array($item)) {
+
+                ?>
+                <div class="cart-item">
+                    <picture>
+                        <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
+                    </picture>
+                    <h3><?php echo $item['product'] ?></h3>
+                    <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                    <div class="btn-group">
+                        <button>-</button>
+                        <button><?php echo $item['quantity'] ?></button>
+                        <button>+</button>
                     </div>
+                    <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
+                </div>
             <?php }
-            } else { ?>
-                <p>Your shopping cart is empty.</p>
-            <?php } ?>
-    </div>
+        }
+    } else { ?>
+        <p>Your shopping cart is empty.</p>
+    <?php } ?>
+</div>
 
-    <div>
-        <h3>Récapitulatif de la commande</h3>
-        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
-        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrderTVAC'];} ?></p>
-    </div>
+<div>
+    <h3>Récapitulatif de la commande</h3>
+    <p><?php if (isset($shoppingCart)) {
+            echo $shoppingCart['totalOrder'];
+        } ?></p>
+    <p><?php if (isset($shoppingCart)) {
+            echo $shoppingCart['totalOrderTVAC'];
+        } ?></p>
+</div>
 
-    <!-- Include the footer -->
-    <?php footerHtml(); ?>
+<!-- Include the footer -->
+<?php footerHtml(); ?>
 </body>
 </html>
