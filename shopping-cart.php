@@ -9,15 +9,9 @@ require "../AZ-store/layouts/footer.php";
 session_start();
 
 
-// Check if the shopping cart session variable exists
-if (!isset($_SESSION["shoppingCart"])) {
-    $_SESSION["shoppingCart"] = array();
-}
-
-$shoppingCart = $_SESSION["shoppingCart"];
-
-
-// Your shopping cart HTML and PHP code can go here
+    if (isset($_SESSION["shoppingCart"])) {
+        $shoppingCart = $_SESSION["shoppingCart"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,24 +27,31 @@ $shoppingCart = $_SESSION["shoppingCart"];
     <?php headerHtml(); ?>
 
     <!-- Your shopping cart content here -->
-    <div class="shopping-cart">
+    <div id="shopping-cart">
         <h2>Your Shopping Cart</h2>
         <?php
-        // Check if the shopping cart is not empty
-        if (!empty($shoppingCart)) {
-            foreach ($shoppingCart as $item) {
-				echo '<div class="cart-item">';
-				echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
-				echo '<h3>' . $item['product'] . '</h3>';
-				echo '<p>' . $item['price'] . ' €</p>';
-				echo '<p>Quantity: ' . $item['quantity'] . '</p>';
-				echo '</div>';
+            // Check if the shopping cart is not empty
+            if (!empty($shoppingCart)) {
+                foreach ($shoppingCart as $item) { ?>
+                    <div class="cart-item">
+                        <picture>
+                            <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
+                        </picture>
+                        <h3><?php echo $item['product'] ?></h3>
+                        <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                        <div class="btn-group">
+                            <button>-</button>
+                            <button><?php echo $item['quantity'] ?></button>
+                            <button>+</button>
+                        </div>
+                        <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
 
-			}
-        } else {
-            echo '<p>Your shopping cart is empty.</p>';
-        }
-        ?>
+                    </div>
+            <?php }
+            } else { ?>
+                <p>Your shopping cart is empty.</p>
+            <?php } ?>
+
     </div>
 
     <!-- Include the footer -->

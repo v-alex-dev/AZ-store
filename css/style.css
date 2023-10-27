@@ -126,7 +126,7 @@ h3 {
 #section-our-store {
   display: flex;
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto 0;
   border-bottom: 0.1px solid rgba(229, 231, 235, 0.2117647059);
 }
 #section-our-store .left-side {
@@ -177,9 +177,8 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
   width: 50%;
-  margin: auto;
+  margin: 50px auto;
 }
 .quality .qualityShoes {
   width: 50%;
@@ -205,7 +204,7 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  margin: 15vh auto;
+  margin: 50px auto;
 }
 #section-comments .comment-group {
   display: flex;
@@ -244,6 +243,46 @@ h3 {
   content: '"';
 }
 
+#shopping-cart {
+  min-height: calc(100vh - 120px);
+  margin: clamp(20px, 5vw, 50px);
+}
+#shopping-cart h2 {
+  padding-bottom: 20px;
+}
+#shopping-cart .cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 20px;
+  margin-left: 0;
+  max-width: 800px;
+}
+#shopping-cart .cart-item picture img {
+  width: 100px;
+}
+#shopping-cart .cart-item h3 {
+  margin: 10px 0;
+}
+#shopping-cart .cart-item .btn-group {
+  display: flex;
+  margin: 10px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  #shopping-cart .cart-item {
+    flex-direction: row;
+  }
+  #shopping-cart .cart-item h3 {
+    margin: 0;
+  }
+  #shopping-cart .cart-item .btn-group {
+    display: flex;
+    margin: 0;
+  }
+}
 .linkNav {
   padding: 0.5em;
   text-decoration: none;
