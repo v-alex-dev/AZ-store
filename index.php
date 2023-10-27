@@ -11,6 +11,7 @@
 
 
 	session_start();
+	// session_destroy();
 	
 	if (!isset($_SESSION["shoppingCart"])) {
 		$_SESSION["shoppingCart"] = array();

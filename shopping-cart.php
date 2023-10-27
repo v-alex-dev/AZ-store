@@ -22,12 +22,19 @@
         $totalOrder = number_format($totalOrder, 2, '.', '');
         $tva = number_format($totalOrder * 0.21, 2, '.', '');
         $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
+        // $tva = $totalOrder * 0.21;
+        // $totalOrderTVAC = $totalOrder * 1.21;
 
         $shoppingCart['totalOrder'] = $totalOrder;
         $shoppingCart['tva'] = $tva;
         $shoppingCart['totalOrderTVAC'] = $totalOrderTVAC;
 
+        $_SESSION["shoppingCart"] = $shoppingCart;
+
     }
+    echo '<pre>';
+    print_r($shoppingCart);
+    echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -74,8 +81,8 @@
 
     <div>
         <h3>Récapitulatif de la commande</h3>
-        <p><?php echo $shoppingCart['totalOrder'] ?></p>
-        <p><?php echo $shoppingCart['totalOrderTVAC'] ?></p>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrderTVAC'];} ?></p>
 
     </div>
 
