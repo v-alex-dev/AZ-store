@@ -71,11 +71,11 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
                         <button><?php echo $item['quantity'] ?></button>
                         <button>+</button>
                     </div>
+                    <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                     <form method="post" id="btn-delete">
                         <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
-                        <button type="submit" class="delete-button">x</button>
+                        <button type="submit" class="btn-delete">x</button>
                     </form>
-                    <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                 </div>
 
             <?php }
