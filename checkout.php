@@ -1,3 +1,24 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include necessary functions and components
+require "../AZ-store/layouts/header.php";
+require "../AZ-store/layouts/footer.php";
+
+session_start();
+
+
+// Check if the shopping cart session variable exists
+if (!isset($_SESSION["shoppingCart"])) {
+    $_SESSION["shoppingCart"] = array();
+}
+
+$shoppingCart = $_SESSION["shoppingCart"];
+
+
+// Your shopping cart HTML and PHP code can go here
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
