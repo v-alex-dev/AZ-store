@@ -12,9 +12,7 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: none;
-     -moz-text-size-adjust: none;
-          text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 footer, header, nav, section, main {
@@ -301,6 +299,8 @@ header nav {
   justify-content: space-between;
   align-items: center;
   padding-top: 1em;
+  width: 80%;
+  margin: 0 auto;
 }
 header nav .login {
   text-decoration: none;
@@ -364,4 +364,6 @@ span {
   width: 100%;
   cursor: pointer;
   margin-top: 5px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
