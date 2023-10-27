@@ -15,9 +15,7 @@ if (!isset($_SESSION["shoppingCart"])) {
 }
 
 $shoppingCart = $_SESSION["shoppingCart"];
-echo '<pre>';
-print_r($shoppingCart);
-echo'</pre>';
+
 
 // Your shopping cart HTML and PHP code can go here
 ?>
