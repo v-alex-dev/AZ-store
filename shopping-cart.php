@@ -12,6 +12,7 @@
 
     $totalOrder = 0;
     $totalOrderTVAC = 0;
+    $numberItems = 0;
 
     if (isset($_SESSION["shoppingCart"])) {
         $shoppingCart = $_SESSION["shoppingCart"];
@@ -37,7 +38,11 @@
         
         foreach ($shoppingCart as $product) {
             if (is_array($product)) {
+                // nombre d'articles dans la commange
+                $numberItems += $product['quantity'];
+                // sous-totaux (total par article)
                 $subtotal = $product['price'] * $product['quantity'];
+                // total de la commande (tous les articles)
                 $totalOrder += $subtotal;  
             }
         }
@@ -82,12 +87,12 @@
                                 <h3><?php echo $item['product'] ?></h3>
                                 <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
                                 <div class="btn-group">                                
-                                    <form method="post" id="btn-delete">
+                                    <form method="post" id="btn-decr">
                                         <input type="hidden" name="decr-item" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="decr-button">-</button>
                                     </form>
                                     <button><?php echo $item['quantity'] ?></button>
-                                    <form method="post" id="btn-delete">
+                                    <form method="post" id="btn-incr">
                                         <input type="hidden" name="incr-item" value="<?php echo $item['id']; ?>">
                                         <button type="submit" class="incr-button">+</button>
                                     </form>
@@ -103,6 +108,7 @@
 
         <div id="total-order">
             <h3>Récapitulatif de la commande</h3>
+            <p><?php if (isset($numberItems)) {echo $numberItems;} ?> articles</p>
             <p>Total : <?php if (isset($shoppingCart['totalOrder'])) {echo $shoppingCart['totalOrder'];} ?> €</p>
             <button><a href="checkout.php">Poursuivre la commande</a></button>
 
