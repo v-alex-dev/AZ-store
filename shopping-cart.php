@@ -79,19 +79,18 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
                 </div>
 
             <?php }
-        }
-    } else { ?>
-        <p>Your shopping cart is empty.</p>
-    <?php } ?>
-</div>
+            } else { ?>
+                <p>Your shopping cart is empty.</p>
+            <?php } ?>
+    </div>
 
-<div>
-    <h3>Récapitulatif de la commande</h3>
-    <p><?php echo $shoppingCart['totalOrder'] ?></p>
-    <p><?php echo $shoppingCart['totalOrderTVAC'] ?></p>
+    <div>
+        <h3>Récapitulatif de la commande</h3>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrderTVAC'];} ?></p>
+    </div>
 
-</div>
-<!-- Include the footer -->
-<?php footerHtml(); ?>
+    <!-- Include the footer -->
+    <?php footerHtml(); ?>
 </body>
 </html>
