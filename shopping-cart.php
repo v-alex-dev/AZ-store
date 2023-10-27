@@ -45,7 +45,7 @@ $shoppingCart = $_SESSION["shoppingCart"];
 				echo '<p>' . $item['price'] . ' €</p>';
 				echo '<p>Quantity: ' . $item['quantity'] . '</p>';
 				echo '</div>';
-			}			
+			}
         } else {
             echo '<p>Your shopping cart is empty.</p>';
         }
