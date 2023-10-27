@@ -1,0 +1,11 @@
+
+.btn-delete {
+  background-color: $color-delete-button;
+  transition-delay: 200ms;
+  transition-duration: 500ms;
+  border-radius: 1em;
+
+  &:hover {
+    box-shadow: 0 0 8px $color-delete-button;
+  }
+}

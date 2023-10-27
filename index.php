@@ -2,9 +2,6 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
-	session_start();
-	// session_destroy();
-
     //requires
     require "../AZ-store/layouts/header.php";
     require "../AZ-store/layouts/footer.php";
@@ -13,8 +10,7 @@
     $products = json_decode($productsJson, true); 
 
 
-
-	
+	session_start();
 	if (!isset($_SESSION["shoppingCart"])) {
 		$_SESSION["shoppingCart"] = array();
 	}

@@ -360,7 +360,7 @@ span {
 
 .checkout_footer form {
   width: 50%;
-  margin: 0 auto;
+  margin: 5% auto;
 }
 .checkout_footer form .name {
   display: flex;
@@ -404,6 +404,16 @@ span {
   width: 100%;
   cursor: pointer;
   margin-top: 5px;
+}
+
+.btn-delete {
+  background-color: #ff3333;
+  transition-delay: 200ms;
+  transition-duration: 500ms;
+  border-radius: 1em;
+}
+.btn-delete:hover {
+  box-shadow: 0 0 8px #ff3333;
 }
 
 /*# sourceMappingURL=style.css.map */
