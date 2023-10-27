@@ -1,52 +1,61 @@
 
+main#main-shopping-cart { 
 
-#shopping-cart {
+    #shopping-cart {
 
-    // height: calc(100vh - 120px);
-    margin: clamp(20px, 5vw, 50px);
+        // height: calc(100vh - 120px);
+        margin: clamp(20px, 5vw, 50px);
 
-    h2 {
-        padding-bottom: 20px;
-    }
-    
-    .cart-item {
-        @include display-flex-center;
-        justify-content: space-between;
-
-        margin: 20px;
-        margin-left: 0;
-        max-width: 800px;
-
-        picture {
-
-            img {
-                width: 100px;
-            }
-        }
-
-        h3 {
-            margin: 10px 0;
+        h2 {
+            padding-bottom: 20px;
         }
         
-        .btn-group {
-            display: flex;
-            margin: 10px 0;
-        }
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    #shopping-cart {
         .cart-item {
-            flex-direction: row;
+            @include display-flex-center;
+            justify-content: space-between;
+
+            margin: 20px;
+            margin-left: 0;
+            max-width: 800px;
+
+            picture {
+
+                img {
+                    width: 100px;
+                }
+            }
 
             h3 {
-                margin: 0;
+                margin: 10px 0;
             }
             
             .btn-group {
                 display: flex;
-                margin: 0;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    #total-order {
+        margin: clamp(20px, 5vw, 50px);
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    #main#main-shopping-cart {
+        #shopping-cart {
+            .cart-item {
+                flex-direction: row;
+
+                h3 {
+                    margin: 0;
+                }
+                
+                .btn-group {
+                    display: flex;
+                    margin: 0;
+                }
             }
         }
     }

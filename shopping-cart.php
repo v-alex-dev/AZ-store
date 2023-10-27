@@ -43,40 +43,42 @@
     <?php headerHtml(); ?>
 
     <!-- Your shopping cart content here -->
-    <div id="shopping-cart">
-        <h2>Your Shopping Cart</h2>
-        <?php
-            // Check if the shopping cart is not empty
-            if (!empty($shoppingCart)) {
-                foreach ($shoppingCart as $key => $item) { 
-                    if ($key === 'totalOrder') {
-                        break;
-                    }?>
-                    <div class="cart-item">
-                        <picture>
-                            <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
-                        </picture>
-                        <h3><?php echo $item['product'] ?></h3>
-                        <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
-                        <div class="btn-group">
-                            <button>-</button>
-                            <button><?php echo $item['quantity'] ?></button>
-                            <button>+</button>
+    <main id="main-shopping-cart">
+        <div id="shopping-cart">
+            <h2>Your Shopping Cart</h2>
+            <?php
+                // Check if the shopping cart is not empty
+                if (!empty($shoppingCart)) {
+                    foreach ($shoppingCart as $key => $item) { 
+                        if ($key === 'totalOrder') {
+                            break;
+                        }?>
+                        <div class="cart-item">
+                            <picture>
+                                <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
+                            </picture>
+                            <h3><?php echo $item['product'] ?></h3>
+                            <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                            <div class="btn-group">
+                                <button>-</button>
+                                <button><?php echo $item['quantity'] ?></button>
+                                <button>+</button>
+                            </div>
+                            <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                         </div>
-                        <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
-                    </div>
-            <?php }	
-            } else { ?>
-                <p>Your shopping cart is empty.</p>
-            <?php } ?>
-    </div>
+                <?php }	
+                } else { ?>
+                    <p>Your shopping cart is empty.</p>
+                <?php } ?>
+        </div>
 
-    <div>
-        <h3>Récapitulatif de la commande</h3>
-        <p><?php echo $shoppingCart['totalOrder'] ?></p>
-        <p><?php echo $shoppingCart['totalOrderTVAC'] ?></p>
+        <div id="total-order">
+            <h3>Récapitulatif de la commande</h3>
+            <p>Total : <?php echo $shoppingCart['totalOrder'] ?> €</p>
+            <button><a href="checkout.php">Poursuivre la commande</a></button>
 
-    </div>
+        </div>
+    </main>
     <!-- Include the footer -->
     <?php footerHtml(); ?>
 </body>
