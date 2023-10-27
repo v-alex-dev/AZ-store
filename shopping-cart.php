@@ -13,7 +13,15 @@ $totalOrderTVAC = 0;
 
 if (isset($_SESSION["shoppingCart"])) {
     $shoppingCart = $_SESSION["shoppingCart"];
+
     foreach ($shoppingCart as $product) {
+        echo '<br>';
+        var_dump($product['price']);
+        echo '<br>';
+        var_dump($product['quantity']);
+        echo '<br>';
+        $subtotal = 0;
+        var_dump($subtotal);
         $subtotal = $product['price'] * $product['quantity'];
         $totalOrder += $subtotal;
     }
@@ -28,13 +36,13 @@ if (isset($_SESSION["shoppingCart"])) {
     $_SESSION["shoppingCart"] = $shoppingCart;
 }
 
-if (isset($_POST['delete-item'])) {
+/*if (isset($_POST['delete-item'])) {
     $deleteItemId = $_POST['delete-item'];
     if (isset($shoppingCart[$deleteItemId])) {
         unset($shoppingCart[$deleteItemId]);
         $_SESSION["shoppingCart"] = $shoppingCart;
     }
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -66,13 +74,13 @@ if (isset($_POST['delete-item'])) {
                         <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
                     </picture>
                     <h3><?php echo $item['product'] ?></h3>
-                    <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                    <p><?php echo 'Total : '.$item['price'].'€'?> </p>
                     <div class="btn-group">
                         <button>-</button>
                         <button><?php echo $item['quantity'] ?></button>
                         <button>+</button>
                     </div>
-                    <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
+                    <p><?php echo 'Total : '.$item['totalOrder'].'€' ?> </p>
                     <form method="post" id="btn-delete">
                         <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
                         <button type="submit" class="delete-button">X</button>
