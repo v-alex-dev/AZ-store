@@ -1,32 +1,80 @@
-<?php
-    echo '<div class="all-product">'; // Opening div tag all-product
-    // Check if JSON data was successfully loaded
-    if ($products) {
-        // Iterate through the products and display them
-        foreach ($products as $product) {
-            echo '<form method="post">';
-                echo '<div class="product">'; // Opening div tag product
-                    echo '<div class="product-header">'; // Opening div tag product header
-                        echo '<img class="shoes" src="' . $product['image_url'] . '" alt="' . $product['product'] . '">';
-                    echo '</div>'; // Closing div tag product header	
-                    echo '<div class="product-footer">'; // Opening div tag product-footer
-                        echo '<div class="product-details">'; // Opening div tag product-details
-                            echo '<h2>' . $product['product'] . '</h2>';
-                            echo '<p>' . $product['price'] . '€</p>';
-                        echo '</div>'; // Closing div tag product-details
-                        echo '<input type="hidden" name="add-cart" value="' . $product['id'] . '">';
-                        echo '<div class="product-button">'; // Opening div tag product-button
-                            echo '<button type="submit" class="button">Add to cart</button>';
-                        echo '</div>'; // Closing div tag product-button
-                    echo '</div>'; // Closing div tag product-footer
-                echo '</div>'; // Closing div tag product
-            echo '</form>';
-        }
-    } else {
-        echo 'Error loading JSON data.';
-    }
-    echo '</div>'; // Closing div tag all-product
+////////////////////////////////////////////////////////////////////////////////////////
+                            shopping-cart.php
+////////////////////////////////////////////////////////////////////////////////////////
+
+<?php 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
+    //requires
+    require "./layouts/header.php";
+    require "./layouts/footer.php";
+
+	session_start();
+	$shoppingFromSession = array();
+	$shoppingCart = array();
+	if (isset($_SESSION["shoppingCart"])) {
+		$shoppingFromSession = $_SESSION["shoppingCart"];
+
+		foreach ($shoppingFromSession as $product) {
+			$productId = $product['id'];
+			$productName = $product['product'];
+			$productPrice = $product['price'];
+			$productUrl = $product['image_url'];
+
+			if (!isset($shoppingCart[$productId])) {
+				$shoppingCart[$productId] = [
+					'product' => $productName,
+					'price' => $productPrice,
+					'id' => $productId,
+					'image_url' => $productUrl,
+					'count' => 0
+				];
+			}
+
+			$shoppingCart[$productId]['count']++;
+		}
+	}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<title>Shopping card</title>
+</head>
+<body>
+	<!-- header -->
+	<?php headerHtml(); ?>
+
+	<!-- main -->
+	<main id="shopping-cart">
+		<?php 
+			if ($shoppingCart) {
+				foreach ($shoppingCart as $product) { ?>
+				<section>
+					<picture>
+						<img src="<?php echo $product['image_url'] ?>" alt="<?php echo $product['product'] ?>">
+					</picture>
+					<h2><?php echo $product['product'] ?></h2>
+					<p><?php echo $product['price'] ?> €</p>
+					<p>x <?php echo $product['count'] ?></p>
+				</section>
+				
+			
+		<?php 
+				}
+			} else {
+					
+			}
+		?>
+	</main>
+	<!-- footer -->
+	<?php footerHtml(); ?>
+</body>
+</html>
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
