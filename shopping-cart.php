@@ -47,13 +47,6 @@ foreach ($shoppingCart as $product) {
             $_SESSION["shoppingCart"] = $shoppingCart;
         }
 
-
-        foreach ($shoppingCart as $product) {
-            if (is_array($product)) {
-                $subtotal = $product['price'] * $product['quantity'];
-                $totalOrder += $subtotal;
-            }
-        }
         $totalOrder = number_format($totalOrder, 2, '.', '');
         $tva = number_format($totalOrder * 0.21, 2, '.', '');
         $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
