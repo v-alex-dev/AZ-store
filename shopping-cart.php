@@ -15,13 +15,6 @@ if (isset($_SESSION["shoppingCart"])) {
     $shoppingCart = $_SESSION["shoppingCart"];
 
     foreach ($shoppingCart as $product) {
-        echo '<br>';
-        var_dump($product['price']);
-        echo '<br>';
-        var_dump($product['quantity']);
-        echo '<br>';
-        $subtotal = 0;
-        var_dump($subtotal);
         $subtotal = $product['price'] * $product['quantity'];
         $totalOrder += $subtotal;
     }
