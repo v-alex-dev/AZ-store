@@ -43,16 +43,16 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
+	<title>Shopping Cart</title>
 </head>
 <body>
-<!-- Include the header -->
-<?php headerHtml(); ?>
+    <!-- Include the header -->
+    <?php headerHtml(); ?>
 
-<!-- Your shopping cart content here -->
-<div id="shopping-cart">
+    <!-- Your shopping cart content here -->
+    <div id="shopping-cart">
     <h2>Your Shopping Cart</h2>
     <?php
     // Check if the shopping cart is not empty
@@ -85,15 +85,11 @@ if (isset($_SESSION["shoppingCart"]) && is_array($_SESSION["shoppingCart"])) {
     <?php } ?>
 </div>
 
-<div>
-    <h3>Récapitulatif de la commande</h3>
-    <p><?php if (isset($shoppingCart)) {
-            echo $shoppingCart['totalOrder'];
-        } ?></p>
-    <p><?php if (isset($shoppingCart)) {
-            echo $shoppingCart['totalOrderTVAC'];
-        } ?></p>
-</div>
+    <div>
+        <h3>Récapitulatif de la commande</h3>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrder'];} ?></p>
+        <p><?php if (isset($shoppingCart)) {echo $shoppingCart['totalOrderTVAC'];} ?></p>
+    </div>
 
 <!-- Include the footer -->
 <?php footerHtml(); ?>
