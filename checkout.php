@@ -1,4 +1,3 @@
-
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -9,12 +8,14 @@ require "../AZ-store/layouts/footer.php";
 
 session_start();
 
-// // Check if the shopping cart session variable exists
+
+// Check if the shopping cart session variable exists
 if (!isset($_SESSION["shoppingCart"])) {
     $_SESSION["shoppingCart"] = array();
 }
 
 $shoppingCart = $_SESSION["shoppingCart"];
+
 
 // Your shopping cart HTML and PHP code can go here
 ?>
@@ -42,15 +43,15 @@ $shoppingCart = $_SESSION["shoppingCart"];
 			foreach ($shoppingCart as $key => $item) {
 				if (is_array($item)) {
 					// Affiche les détails de chaque article dans le panier
-					echo '<div class="cart-item">';
-						echo '<picture>';
-							echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
-						echo '</picture>';
-						echo '<h3>' . $item['product'] . '</h3>';
-						echo '<p>Prix unitaire : ' . $item['price'] . ' €</p>';
-						echo '<p>Quantités : ' . $item['quantity']. '</p>';
-						echo '<p>Total : ' . ($item['quantity'] * $item['price']) . ' €</p>';
-					echo '</div>';
+						echo '<div class="cart-item">';
+							echo '<picture>';
+								echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
+							echo '</picture>';
+							echo '<h3>' . $item['product'] . '</h3>';
+							echo '<p>Prix unitaire : ' . $item['price'] . ' €</p>';
+							echo '<p>Quantités : ' . $item['quantity']. '</p>';
+							echo '<p>Total : ' . ($item['quantity'] * $item['price']) . ' €</p>';
+						echo '</div>';
 					// Calculez le prix total
 					$totalPrice += $item['price'] * $item['quantity'];
 				}
@@ -58,13 +59,9 @@ $shoppingCart = $_SESSION["shoppingCart"];
 		} else {
 			echo '<p>Your shopping cart is empty.</p>';
 		}
-		//echo '<h2 class="TVA">TVA (21%) : ' . number_format($totalPrice * 0.21, 2, ',', '') . ' €</h2>';
-		// echo '<h2 class="total">Total TTC : ' . number_format($totalPrice * 1.21, 2, ',', '') . ' €</h2>';
 		?>
-		
-		<h2 class="TVA">TVA (21%) : <?php if (isset($shoppingCart['tva'])) echo $shoppingCart['tva'] ?> €</h2>
-		<h2 class="total">Total TTC :  <?php if ($shoppingCart['totalOrderTVAC']) echo $shoppingCart['totalOrderTVAC'] ?> €</h2>
-		
+		<h2 class="TVA">TVA (21%) : <?php echo $shoppingCart['tva'] ?> €</h2>
+		<h2 class="total">Total TTC :  <?php echo $shoppingCart['totalOrderTVAC'] ?> €</h2>
 	</section>
 	<!-- form -->
 	<section class="checkout_footer">

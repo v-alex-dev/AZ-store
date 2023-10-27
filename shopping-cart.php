@@ -15,6 +15,25 @@
 
     if (isset($_SESSION["shoppingCart"])) {
         $shoppingCart = $_SESSION["shoppingCart"];
+
+        if (isset($_POST['incr-item'])) {
+            $incrItemId = $_POST['incr-item'];
+            if (isset($shoppingCart[$incrItemId])) {
+                $shoppingCart[$incrItemId]['quantity']++;
+            }
+            $_SESSION["shoppingCart"] = $shoppingCart;
+        }
+        if (isset($_POST['decr-item'])) {
+            $decrItemId = $_POST['decr-item'];
+            if (isset($shoppingCart[$decrItemId])) {
+                $shoppingCart[$decrItemId]['quantity']--;
+            }
+            if ($shoppingCart[$decrItemId]['quantity'] === 0) {
+                unset($shoppingCart[$decrItemId]);
+            }
+            $_SESSION["shoppingCart"] = $shoppingCart;
+        }
+
         
         foreach ($shoppingCart as $product) {
             if (is_array($product)) {
@@ -62,10 +81,16 @@
                                 </picture>
                                 <h3><?php echo $item['product'] ?></h3>
                                 <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
-                                <div class="btn-group">
-                                    <button>-</button>
+                                <div class="btn-group">                                
+                                    <form method="post" id="btn-delete">
+                                        <input type="hidden" name="decr-item" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" class="decr-button">-</button>
+                                    </form>
                                     <button><?php echo $item['quantity'] ?></button>
-                                    <button>+</button>
+                                    <form method="post" id="btn-delete">
+                                        <input type="hidden" name="incr-item" value="<?php echo $item['id']; ?>">
+                                        <button type="submit" class="incr-button">+</button>
+                                    </form>
                                 </div>
                                 <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
                             </div>
@@ -78,7 +103,7 @@
 
         <div id="total-order">
             <h3>Récapitulatif de la commande</h3>
-            <p>Total : <?php if (isset($shoppingCart['totalOrder'])) echo $shoppingCart['totalOrder'] ?> €</p>
+            <p>Total : <?php if (isset($shoppingCart['totalOrder'])) {echo $shoppingCart['totalOrder'];} ?> €</p>
             <button><a href="checkout.php">Poursuivre la commande</a></button>
 
         </div>
