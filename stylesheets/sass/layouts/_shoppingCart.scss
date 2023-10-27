@@ -2,7 +2,7 @@
 
 #shopping-cart {
 
-    min-height: calc(100vh - 120px);
+    // height: calc(100vh - 120px);
     margin: clamp(20px, 5vw, 50px);
 
     h2 {
@@ -11,9 +11,8 @@
     
     .cart-item {
         @include display-flex-center;
-        // display: flex;
         justify-content: space-between;
-        // align-items: center;
+
         margin: 20px;
         margin-left: 0;
         max-width: 800px;

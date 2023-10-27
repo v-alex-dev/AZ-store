@@ -8,10 +8,25 @@ require "../AZ-store/layouts/footer.php";
 
 session_start();
 
+    $totalOrder = 0;
+    $totalOrderTVAC = 0;
 
-if (isset($_SESSION["shoppingCart"])) {
-    $shoppingCart = $_SESSION["shoppingCart"];
-}
+    if (isset($_SESSION["shoppingCart"])) {
+        $shoppingCart = $_SESSION["shoppingCart"];
+
+        foreach ($shoppingCart as $product) {
+            $subtotal = $product['price'] * $product['quantity'];
+            $totalOrder += $subtotal;
+        }
+        $totalOrder = number_format($totalOrder, 2, '.', '');
+        $tva = number_format($totalOrder * 0.21, 2, '.', '');
+        $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
+
+        $shoppingCart['totalOrder'] = $totalOrder;
+        $shoppingCart['tva'] = $tva;
+        $shoppingCart['totalOrderTVAC'] = $totalOrderTVAC;
+
+    }
 if (isset($_POST['delete-item'])) {
     $deleteItemId = $_POST['delete-item'];
     if (isset($shoppingCart[$deleteItemId])) {
@@ -30,41 +45,50 @@ if (isset($_POST['delete-item'])) {
     <title>Shopping Cart</title>
 </head>
 <body>
-<!-- Include the header -->
-<?php headerHtml(); ?>
+    <!-- Include the header -->
+    <?php headerHtml(); ?>
 
-<!-- Your shopping cart content here -->
-<div id="shopping-cart">
-    <h2>Your Shopping Cart</h2>
-    <?php
-    // Check if the shopping cart is not empty
-    if (!empty($shoppingCart)) {
-        foreach ($shoppingCart as $item) { ?>
-            <div class="cart-item">
-                <picture>
-                    <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
-                </picture>
-                <h3><?php echo $item['product'] ?></h3>
-                <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
-                <div class="btn-group">
-                    <button>-</button>
-                    <button><?php echo $item['quantity'] ?></button>
-                    <button>+</button>
-                </div>
-                <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
-                <form method="post" id="btn-delete">
-                    <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
-                    <button type="submit" class="delete-button">X</button>
-                </form>
-            </div>
-        <?php }
-    } else { ?>
-        <p>Your shopping cart is empty.</p>
-    <?php } ?>
+    <!-- Your shopping cart content here -->
+    <div id="shopping-cart">
+        <h2>Your Shopping Cart</h2>
+        <?php
+            // Check if the shopping cart is not empty
+            if (!empty($shoppingCart)) {
+                foreach ($shoppingCart as $key => $item) {
+                    if ($key === 'totalOrder') {
+                        break;
+                    }?>
+                    <div class="cart-item">
+                        <picture>
+                            <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
+                        </picture>
+                        <h3><?php echo $item['product'] ?></h3>
+                        <p>Prix unitaire : <?php echo $item['price'] ?> €</p>
+                        <div class="btn-group">
+                            <button>-</button>
+                            <button><?php echo $item['quantity'] ?></button>
+                            <button>+</button>
+                        </div>
+                        <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
+                        <form method="post" id="btn-delete">
+                            <input type="hidden" name="delete-item" value="<?php echo $item['id']; ?>">
+                            <button type="submit" class="delete-button">X</button>
+                        </form>
+                    </div>
+            <?php }
+            } else { ?>
+                <p>Your shopping cart is empty.</p>
+            <?php } ?>
+    </div>
 
-</div>
+    <div>
+        <h3>Récapitulatif de la commande</h3>
+        <p><?php echo $shoppingCart['totalOrder'] ?></p>
+        <p><?php echo $shoppingCart['totalOrderTVAC'] ?></p>
 
-<!-- Include the footer -->
-<?php footerHtml(); ?>
+    </div>
+
+    <!-- Include the footer -->
+    <?php footerHtml(); ?>
 </body>
 </html>
