@@ -8,9 +8,25 @@
 
     session_start();
     // session_destroy();
+    
+    $totalOrder = 0;
+    $totalOrderTVAC = 0;
 
     if (isset($_SESSION["shoppingCart"])) {
         $shoppingCart = $_SESSION["shoppingCart"];
+        
+        foreach ($shoppingCart as $product) {
+            $subtotal = $product['price'] * $product['quantity'];
+            $totalOrder += $subtotal;  
+        }
+        $totalOrder = number_format($totalOrder, 2, '.', '');
+        $tva = number_format($totalOrder * 0.21, 2, '.', '');
+        $totalOrderTVAC = number_format($totalOrder * 1.21, 2, '.', '');
+
+        $shoppingCart['totalOrder'] = $totalOrder;
+        $shoppingCart['tva'] = $tva;
+        $shoppingCart['totalOrderTVAC'] = $totalOrderTVAC;
+
     }
 ?>
 
@@ -32,7 +48,10 @@
         <?php
             // Check if the shopping cart is not empty
             if (!empty($shoppingCart)) {
-                foreach ($shoppingCart as $item) { ?>
+                foreach ($shoppingCart as $key => $item) { 
+                    if ($key === 'totalOrder') {
+                        break;
+                    }?>
                     <div class="cart-item">
                         <picture>
                             <img src="<?php echo $item['image_url'] ?>" alt="<?php echo $item['product'] ?>">
@@ -45,15 +64,19 @@
                             <button>+</button>
                         </div>
                         <p>Total : <?php echo $item['quantity'] * $item['price'] ?> €</p>
-
                     </div>
             <?php }	
             } else { ?>
                 <p>Your shopping cart is empty.</p>
             <?php } ?>
-
     </div>
 
+    <div>
+        <h3>Récapitulatif de la commande</h3>
+        <p><?php echo $shoppingCart['totalOrder'] ?></p>
+        <p><?php echo $shoppingCart['totalOrderTVAC'] ?></p>
+
+    </div>
     <!-- Include the footer -->
     <?php footerHtml(); ?>
 </body>

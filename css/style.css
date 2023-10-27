@@ -12,7 +12,9 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
 }
 
 footer, header, nav, section, main {
@@ -244,7 +246,6 @@ h3 {
 }
 
 #shopping-cart {
-  min-height: calc(100vh - 120px);
   margin: clamp(20px, 5vw, 50px);
 }
 #shopping-cart h2 {
@@ -364,6 +365,4 @@ span {
   width: 100%;
   cursor: pointer;
   margin-top: 5px;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
