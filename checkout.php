@@ -1,3 +1,25 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include necessary functions and components
+require "../AZ-store/layouts/header.php";
+require "../AZ-store/layouts/footer.php";
+
+session_start();
+
+
+// Check if the shopping cart session variable exists
+if (!isset($_SESSION["shoppingCart"])) {
+    $_SESSION["shoppingCart"] = array();
+}
+
+$shoppingCart = $_SESSION["shoppingCart"];
+
+
+// Your shopping cart HTML and PHP code can go here
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +29,39 @@
 	<title>Checkout</title>
 </head>
 <body>
-	<!-- checkout -->
-	<section class="checkout_body">
+	<!-- Include the header -->
+	<?php headerHtml(); ?>
 
+	<!-- checkout -->
+	<section id="checkout_body">
+		<h2>Your Shopping Cart Contents</h2>
+		<?php
+		$totalPrice = 0; // Initialise la variable pour le prix total
+
+		// Vérifiez si le panier n'est pas vide
+		if (!empty($shoppingCart) && is_array($shoppingCart)) {
+			foreach ($shoppingCart as $key => $item) {
+				if (is_array($item)) {
+					// Affiche les détails de chaque article dans le panier
+						echo '<div class="cart-item">';
+							echo '<picture>';
+								echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
+							echo '</picture>';
+							echo '<h3>' . $item['product'] . '</h3>';
+							echo '<p>Prix unitaire : ' . $item['price'] . ' €</p>';
+							echo '<p>Quantités : ' . $item['quantity']. '</p>';
+							echo '<p>Total : ' . ($item['quantity'] * $item['price']) . ' €</p>';
+						echo '</div>';
+					// Calculez le prix total
+					$totalPrice += $item['price'] * $item['quantity'];
+				}
+			}
+		} else {
+			echo '<p>Your shopping cart is empty.</p>';
+		}
+		?>
+		<h2 class="TVA">TVA (21%) : <?php echo $shoppingCart['tva'] ?> €</h2>
+		<h2 class="total">Total TTC :  <?php echo $shoppingCart['totalOrderTVAC'] ?> €</h2>
 	</section>
 	<!-- form -->
 	<section class="checkout_footer">
@@ -64,6 +116,7 @@
 			} else {
 				// Form data is valid, process it as needed
 				echo "Form submitted successfully.";
+				session_destroy();
 			}
 		}
 
@@ -75,5 +128,7 @@
 		}
 	?>
 	</section>
+	<!-- Include the footer -->
+    <?php footerHtml(); ?>
 </body>
 </html>

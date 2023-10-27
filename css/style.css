@@ -243,13 +243,13 @@ h3 {
   content: '"';
 }
 
-#shopping-cart {
+main#main-shopping-cart #shopping-cart {
   margin: clamp(20px, 5vw, 50px);
 }
-#shopping-cart h2 {
+main#main-shopping-cart #shopping-cart h2 {
   padding-bottom: 20px;
 }
-#shopping-cart .cart-item {
+main#main-shopping-cart #shopping-cart .cart-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -259,26 +259,67 @@ h3 {
   margin-left: 0;
   max-width: 800px;
 }
-#shopping-cart .cart-item picture img {
+main#main-shopping-cart #shopping-cart .cart-item picture img {
   width: 100px;
 }
-#shopping-cart .cart-item h3 {
+main#main-shopping-cart #shopping-cart .cart-item h3 {
   margin: 10px 0;
 }
-#shopping-cart .cart-item .btn-group {
+main#main-shopping-cart #shopping-cart .cart-item .btn-group {
   display: flex;
   margin: 10px 0;
 }
+main#main-shopping-cart #total-order {
+  margin: clamp(20px, 5vw, 50px);
+}
 
 @media only screen and (min-width: 768px) {
-  #shopping-cart .cart-item {
+  main#main-shopping-cart #shopping-cart .cart-item {
     flex-direction: row;
   }
-  #shopping-cart .cart-item h3 {
+  main#main-shopping-cart #shopping-cart .cart-item h3 {
     margin: 0;
   }
-  #shopping-cart .cart-item .btn-group {
+  main#main-shopping-cart #shopping-cart .cart-item .btn-group {
     display: flex;
+    margin: 0;
+  }
+}
+#checkout_body {
+  margin: clamp(20px, 5vw, 50px);
+}
+#checkout_body h2 {
+  padding-bottom: 20px;
+}
+#checkout_body .cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 20px;
+  margin-left: 0;
+  max-width: 800px;
+}
+#checkout_body .cart-item picture img {
+  width: 100px;
+}
+#checkout_body .cart-item h3 {
+  margin: 10px 0;
+}
+#checkout_body .TVA {
+  text-align: right;
+  padding-bottom: 0;
+}
+#checkout_body .total {
+  text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+  #checkout_body .cart-item {
+    flex-direction: row;
+  }
+  #checkout_body .cart-item h3 {
     margin: 0;
   }
 }
