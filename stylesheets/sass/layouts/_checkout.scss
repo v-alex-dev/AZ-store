@@ -1,0 +1,47 @@
+#checkout_body {
+    margin: clamp(20px, 5vw, 50px);
+
+    h2 {
+        padding-bottom: 20px;
+    }
+    
+    .cart-item {
+        @include display-flex-center;
+        // display: flex;
+        justify-content: space-between;
+        // align-items: center;
+        margin: 20px;
+        margin-left: 0;
+        max-width: 800px;
+
+        picture {
+
+            img {
+                width: 100px;
+            }
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+    }
+    .TVA{
+        text-align: right;
+        padding-bottom: 0;
+    }
+    .total {
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #checkout_body {
+        .cart-item {
+            flex-direction: row;
+
+            h3 {
+                margin: 0;
+            }
+        }
+    }
+}

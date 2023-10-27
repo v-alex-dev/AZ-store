@@ -33,7 +33,7 @@ $shoppingCart = $_SESSION["shoppingCart"];
 	<?php headerHtml(); ?>
 
 	<!-- checkout -->
-	<section class="checkout_body">
+	<section id="checkout_body">
 		<h2>Your Shopping Cart Contents</h2>
 		<?php
 		$totalPrice = 0; // Initialise la variable pour le prix total
@@ -42,20 +42,23 @@ $shoppingCart = $_SESSION["shoppingCart"];
 		if (!empty($shoppingCart)) {
 			foreach ($shoppingCart as $item) {
 				// Affiche les détails de chaque article dans le panier
-				echo '<div class="cart-item">';
-				echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
-				echo '<h3>' . $item['product'] . '</h3>';
-				echo '<p>' . $item['price'] . ' €</p>';
-				echo '<p>Quantity: ' . $item['quantity'] . '</p>';
-				echo '</div>';
-
+					echo '<div class="cart-item">';
+						echo '<picture>';
+							echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
+						echo '</picture>';
+						echo '<h3>' . $item['product'] . '</h3>';
+						echo '<p>Prix unitaire : ' . $item['price'] . ' €</p>';
+						echo '<p>Quantités : ' . $item['quantity']. '</p>';
+						echo '<p>Total : ' . ($item['quantity'] * $item['price']) . ' €</p>';
+					echo '</div>';
 				// Calculez le prix total
-				$totalPrice += $item['price'] * $item['quantity'] * 1.21;
+				$totalPrice += $item['price'] * $item['quantity'];
 			}
 		} else {
 			echo '<p>Your shopping cart is empty.</p>';
 		}
-		echo '<h2>Total Price: ' . $totalPrice . ' €</h2>';
+		echo '<h2 class="TVA">TVA (21%) : ' . number_format($totalPrice * 0.21, 2, ',', '') . ' €</h2>';
+		echo '<h2 class="total">Total TTC : ' . number_format($totalPrice * 1.21, 2, ',', '') . ' €</h2>';
 		?>
 	</section>
 	<!-- form -->

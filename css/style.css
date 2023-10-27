@@ -12,7 +12,9 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
 }
 
 footer, header, nav, section, main {
@@ -283,6 +285,44 @@ h3 {
     margin: 0;
   }
 }
+#checkout_body {
+  margin: clamp(20px, 5vw, 50px);
+}
+#checkout_body h2 {
+  padding-bottom: 20px;
+}
+#checkout_body .cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 20px;
+  margin-left: 0;
+  max-width: 800px;
+}
+#checkout_body .cart-item picture img {
+  width: 100px;
+}
+#checkout_body .cart-item h3 {
+  margin: 10px 0;
+}
+#checkout_body .TVA {
+  text-align: right;
+  padding-bottom: 0;
+}
+#checkout_body .total {
+  text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+  #checkout_body .cart-item {
+    flex-direction: row;
+  }
+  #checkout_body .cart-item h3 {
+    margin: 0;
+  }
+}
 .linkNav {
   padding: 0.5em;
   text-decoration: none;
@@ -320,7 +360,7 @@ span {
 
 .checkout_footer form {
   width: 50%;
-  margin: 0 auto;
+  margin: 5% auto;
 }
 .checkout_footer form .name {
   display: flex;
@@ -364,6 +404,4 @@ span {
   width: 100%;
   cursor: pointer;
   margin-top: 5px;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
