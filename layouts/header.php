@@ -28,7 +28,7 @@ function headerHtml()
                         </g>
                     </svg>
                 </a>
-                <a href="#" class="login">Login</a>
+                <a href="./checkout.php" class="login">Login</a>
             </div>
         </nav>
     </header>
