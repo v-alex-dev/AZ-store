@@ -13,13 +13,8 @@ session_start();
 if (!isset($_SESSION["shoppingCart"])) {
     $_SESSION["shoppingCart"] = array();
 }
-// if (isset($_SESSION["shoppingCart"])) {
-// }
-$shoppingCart = $_SESSION["shoppingCart"];
-// echo '<pre>';
-// print_r($shoppingCart);
-// echo '</pre>';
 
+$shoppingCart = $_SESSION["shoppingCart"];
 
 // Your shopping cart HTML and PHP code can go here
 ?>
@@ -43,12 +38,10 @@ $shoppingCart = $_SESSION["shoppingCart"];
 		$totalPrice = 0; // Initialise la variable pour le prix total
 
 		// Vérifiez si le panier n'est pas vide
-		if (!empty($shoppingCart)) {
+		if (!empty($shoppingCart) && is_array($shoppingCart)) {
 			foreach ($shoppingCart as $key => $item) {
-				if ($key === 'totalOrder' OR $key === 'tva' OR $key === 'totalOrderTVAC') {
-					continue;
-				}
-				// Affiche les détails de chaque article dans le panier
+				if (is_array($item)) {
+					// Affiche les détails de chaque article dans le panier
 					echo '<div class="cart-item">';
 						echo '<picture>';
 							echo '<img src="' . $item['image_url'] . '" alt="' . $item['product'] . '">';
@@ -58,8 +51,9 @@ $shoppingCart = $_SESSION["shoppingCart"];
 						echo '<p>Quantités : ' . $item['quantity']. '</p>';
 						echo '<p>Total : ' . ($item['quantity'] * $item['price']) . ' €</p>';
 					echo '</div>';
-				// Calculez le prix total
-				$totalPrice += $item['price'] * $item['quantity'];
+					// Calculez le prix total
+					$totalPrice += $item['price'] * $item['quantity'];
+				}
 			}
 		} else {
 			echo '<p>Your shopping cart is empty.</p>';
@@ -67,10 +61,10 @@ $shoppingCart = $_SESSION["shoppingCart"];
 		//echo '<h2 class="TVA">TVA (21%) : ' . number_format($totalPrice * 0.21, 2, ',', '') . ' €</h2>';
 		// echo '<h2 class="total">Total TTC : ' . number_format($totalPrice * 1.21, 2, ',', '') . ' €</h2>';
 		?>
-		<?php if (isset($shoppingCart)) { ?>
+		
 		<h2 class="TVA">TVA (21%) : <?php if (isset($shoppingCart['tva'])) echo $shoppingCart['tva'] ?> €</h2>
 		<h2 class="total">Total TTC :  <?php if ($shoppingCart['totalOrderTVAC']) echo $shoppingCart['totalOrderTVAC'] ?> €</h2>
-		<?php } ?>
+		
 	</section>
 	<!-- form -->
 	<section class="checkout_footer">

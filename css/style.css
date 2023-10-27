@@ -276,13 +276,13 @@ main#main-shopping-cart #total-order {
 }
 
 @media only screen and (min-width: 768px) {
-  #main#main-shopping-cart #shopping-cart .cart-item {
+  main#main-shopping-cart #shopping-cart .cart-item {
     flex-direction: row;
   }
-  #main#main-shopping-cart #shopping-cart .cart-item h3 {
+  main#main-shopping-cart #shopping-cart .cart-item h3 {
     margin: 0;
   }
-  #main#main-shopping-cart #shopping-cart .cart-item .btn-group {
+  main#main-shopping-cart #shopping-cart .cart-item .btn-group {
     display: flex;
     margin: 0;
   }
